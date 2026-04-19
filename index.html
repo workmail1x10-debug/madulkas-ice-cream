@@ -555,6 +555,9 @@ p{color:var(--text-light)}
 .form-submit{text-align:center;margin-top:24px}
 .form-success{display:none;text-align:center;padding:16px;background:#d4edda;color:#155724;border-radius:var(--radius-sm);margin-top:16px;font-weight:500}
 .form-success.show{display:block}
+.form-success.error{background:#fdecea;color:#8a1c1c}
+.honeypot{position:absolute !important;left:-9999px !important;opacity:0 !important;pointer-events:none !important;width:1px;height:1px}
+.btn[disabled]{opacity:.6;cursor:wait}
 
 /* ═══ FOOTER ═══ */
 .footer{background:var(--bg-dark);color:rgba(255,255,255,.7);padding:80px 0 0}
@@ -1398,17 +1401,21 @@ p{color:var(--text-light)}
 
       <div class="apply-form-wrap reveal">
         <form id="apply-form" class="apply-form">
+          <input type="hidden" id="apply-form-key" name="access_key" value="2d424386-f6d6-4f36-92b6-8d579c52adca">
+          <input type="hidden" name="subject" value="New Job Application — Madulka's Ice Cream">
+          <input type="hidden" name="from_name" value="Madulka's Ice Cream Careers">
+          <input type="checkbox" name="botcheck" class="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
           <div class="form-row">
-            <div class="form-group"><label for="af-name">Your Name *</label><input type="text" id="af-name" required></div>
-            <div class="form-group"><label for="af-email">Email Address *</label><input type="email" id="af-email" required></div>
+            <div class="form-group"><label for="af-name">Your Name *</label><input type="text" id="af-name" name="Name" required></div>
+            <div class="form-group"><label for="af-email">Email Address *</label><input type="email" id="af-email" name="email" required></div>
           </div>
           <div class="form-row">
-            <div class="form-group"><label for="af-phone">Phone Number *</label><input type="tel" id="af-phone" required></div>
-            <div class="form-group"><label for="af-dob">Date of Birth *</label><input type="date" id="af-dob" required></div>
+            <div class="form-group"><label for="af-phone">Phone Number *</label><input type="tel" id="af-phone" name="Phone" required></div>
+            <div class="form-group"><label for="af-dob">Date of Birth *</label><input type="date" id="af-dob" name="Date of Birth" required></div>
           </div>
           <div class="form-row">
             <div class="form-group"><label for="af-citizen">U.S. Citizen? *</label>
-              <select id="af-citizen" required>
+              <select id="af-citizen" name="US Citizen" required>
                 <option value="">Select...</option>
                 <option>Yes</option>
                 <option>No</option>
@@ -1416,7 +1423,7 @@ p{color:var(--text-light)}
               </select>
             </div>
             <div class="form-group"><label for="af-felony">Ever convicted of a felony? *</label>
-              <select id="af-felony" required>
+              <select id="af-felony" name="Felony Conviction" required>
                 <option value="">Select...</option>
                 <option>No</option>
                 <option>Yes</option>
@@ -1425,36 +1432,36 @@ p{color:var(--text-light)}
           </div>
           <div class="form-group full">
             <label for="af-worked">Have you ever worked for Madulka's before? If yes, when? *</label>
-            <input type="text" id="af-worked" placeholder="No / Yes — describe when" required>
+            <input type="text" id="af-worked" name="Previous Madulka's Employment" placeholder="No / Yes — describe when" required>
           </div>
           <div class="form-group full">
             <label for="af-availability">General Availability (days of the week you can work) *</label>
-            <input type="text" id="af-availability" placeholder="e.g. Mon, Wed, Fri evenings; Sat/Sun all day" required>
+            <input type="text" id="af-availability" name="Availability" placeholder="e.g. Mon, Wed, Fri evenings; Sat/Sun all day" required>
           </div>
           <div class="form-row">
             <div class="form-group"><label for="af-education">Highest Level of Education *</label>
-              <input type="text" id="af-education" placeholder="e.g. High School, In Progress, College" required>
+              <input type="text" id="af-education" name="Education" placeholder="e.g. High School, In Progress, College" required>
             </div>
             <div class="form-group"><label for="af-school">Currently in School? Which school?</label>
-              <input type="text" id="af-school" placeholder="School name or N/A">
+              <input type="text" id="af-school" name="Current School" placeholder="School name or N/A">
             </div>
           </div>
           <div class="form-group full">
             <label for="af-references">References (three, with contact info) *</label>
-            <textarea id="af-references" placeholder="Name, relationship, phone/email — three references" required></textarea>
+            <textarea id="af-references" name="References" placeholder="Name, relationship, phone/email — three references" required></textarea>
           </div>
           <div class="form-group full">
             <label for="af-past-emp">Past Employment (previous jobs + description) *</label>
-            <textarea id="af-past-emp" placeholder="List any past employment with brief descriptions" required></textarea>
+            <textarea id="af-past-emp" name="Past Employment" placeholder="List any past employment with brief descriptions" required></textarea>
           </div>
           <div class="form-group full">
             <label for="af-military">Have you ever served in the military?</label>
-            <input type="text" id="af-military" placeholder="No / Yes — branch and dates">
+            <input type="text" id="af-military" name="Military Service" placeholder="No / Yes — branch and dates">
           </div>
 
           <div class="apply-disclaimer">
             <label class="checkbox-row">
-              <input type="checkbox" id="af-certify" required>
+              <input type="checkbox" id="af-certify" name="Certified True" value="Yes" required>
               <span>I certify that my answers are true and complete to the best of my knowledge. I understand that false or misleading information may result in my release if hired.</span>
             </label>
           </div>
@@ -1508,12 +1515,16 @@ p{color:var(--text-light)}
         <h3 data-bind="sections.formHeadline"></h3>
         <p class="form-lede">Have a question or want to share feedback? Drop us a line.</p>
         <form id="contact-form">
+          <input type="hidden" id="contact-form-key" name="access_key" value="2b126660-b5a8-4e3f-8f9a-15828ecc776d">
+          <input type="hidden" name="subject" value="New Contact Form Message — Madulka's Ice Cream">
+          <input type="hidden" name="from_name" value="Madulka's Ice Cream Website">
+          <input type="checkbox" name="botcheck" class="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
           <div class="form-grid">
-            <div class="form-group"><label for="cf-name">Name</label><input type="text" id="cf-name" placeholder="Your name" required></div>
-            <div class="form-group"><label for="cf-phone">Phone</label><input type="tel" id="cf-phone" placeholder="(508) 555-1234"></div>
-            <div class="form-group"><label for="cf-email">Email</label><input type="email" id="cf-email" placeholder="you@email.com" required></div>
-            <div class="form-group"><label for="cf-subject">Subject</label><input type="text" id="cf-subject" placeholder="How can we help?"></div>
-            <div class="form-group full"><label for="cf-message">Message</label><textarea id="cf-message" placeholder="Tell us what's on your mind..." required></textarea></div>
+            <div class="form-group"><label for="cf-name">Name</label><input type="text" id="cf-name" name="name" placeholder="Your name" required></div>
+            <div class="form-group"><label for="cf-phone">Phone</label><input type="tel" id="cf-phone" name="phone" placeholder="(508) 555-1234"></div>
+            <div class="form-group"><label for="cf-email">Email</label><input type="email" id="cf-email" name="email" placeholder="you@email.com" required></div>
+            <div class="form-group"><label for="cf-subject">Subject</label><input type="text" id="cf-subject" name="inquiry_subject" placeholder="How can we help?"></div>
+            <div class="form-group full"><label for="cf-message">Message</label><textarea id="cf-message" name="message" placeholder="Tell us what's on your mind..." required></textarea></div>
           </div>
           <div class="form-submit"><button type="submit" class="btn btn-primary">Send Message</button></div>
           <div class="form-success" id="form-success">Thank you! We received your message and will get back to you soon.</div>
@@ -1630,6 +1641,10 @@ p{color:var(--text-light)}
   <label>Hill: Photo 1 URL</label><input data-edit="hillLocation.images.0">
   <label>Hill: Photo 2 URL</label><input data-edit="hillLocation.images.1">
   <label>Hill: Photo 3 URL</label><input data-edit="hillLocation.images.2">
+
+  <h3>Web3Forms Access Keys</h3>
+  <label>Contact Form Access Key</label><input data-edit="forms.contactAccessKey">
+  <label>Apply Form Access Key</label><input data-edit="forms.applyAccessKey">
 
   <h3>Instagram Reels (Socials page feed)</h3>
   <label>Reel 1 URL (or embed code)</label><input data-edit="social.reels.0" placeholder="https://www.instagram.com/reel/ABC.../">
@@ -1806,6 +1821,10 @@ const DEFAULT_CONFIG = {
     primary: "View Our Flavors",
     primaryLink: "#menu",
     phoneLabel: "Call Us"
+  },
+  forms: {
+    contactAccessKey: "2b126660-b5a8-4e3f-8f9a-15828ecc776d",
+    applyAccessKey: "2d424386-f6d6-4f36-92b6-8d579c52adca"
   }
 };
 
@@ -2064,6 +2083,14 @@ function render() {
   document.getElementById('footer-phone').innerHTML = `<a href="${telLink()}">${config.contact.phone}</a>`;
   document.getElementById('footer-service-area').textContent = config.contact.serviceAreas;
 
+  // Web3Forms keys (sync from config so they can be rotated via editor panel)
+  if (config.forms) {
+    const ck = document.getElementById('contact-form-key');
+    if (ck && config.forms.contactAccessKey) ck.value = config.forms.contactAccessKey;
+    const ak = document.getElementById('apply-form-key');
+    if (ak && config.forms.applyAccessKey) ak.value = config.forms.applyAccessKey;
+  }
+
   // Copyright
   document.getElementById('copyright-year').textContent = new Date().getFullYear();
 
@@ -2307,21 +2334,62 @@ document.addEventListener('keydown', e => {
 /* ═══════════════════════════════════════
    CONTACT FORM
    ═══════════════════════════════════════ */
+// ─── Web3Forms submission ───
+async function submitToWeb3Forms(form, successEl, opts = {}) {
+  const {
+    successText = 'Thanks! We got your message.',
+    scrollToSuccess = false,
+    hideAfterMs = 8000
+  } = opts;
+
+  const btn = form.querySelector('button[type="submit"]');
+  const origBtnText = btn.textContent;
+  btn.textContent = 'Sending…';
+  btn.disabled = true;
+  successEl.classList.remove('show', 'error');
+
+  try {
+    const res = await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json' },
+      body: new FormData(form)
+    });
+    const data = await res.json();
+    if (data.success) {
+      successEl.textContent = successText;
+      successEl.classList.remove('error');
+      successEl.classList.add('show');
+      form.reset();
+      if (scrollToSuccess) successEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    } else {
+      successEl.textContent = (data.message || 'Something went wrong.') + ' Please call us at ' + config.contact.phone + '.';
+      successEl.classList.add('show', 'error');
+    }
+  } catch (err) {
+    successEl.textContent = 'Network error — please try again, or call us at ' + config.contact.phone + '.';
+    successEl.classList.add('show', 'error');
+  } finally {
+    btn.textContent = origBtnText;
+    btn.disabled = false;
+    setTimeout(() => { successEl.classList.remove('show', 'error'); }, hideAfterMs);
+  }
+}
+
 document.getElementById('contact-form').addEventListener('submit', e => {
   e.preventDefault();
-  const success = document.getElementById('form-success');
-  success.classList.add('show');
-  e.target.reset();
-  setTimeout(() => success.classList.remove('show'), 6000);
+  submitToWeb3Forms(e.target, document.getElementById('form-success'), {
+    successText: 'Thank you! We received your message and will get back to you soon.',
+    hideAfterMs: 7000
+  });
 });
 
 document.getElementById('apply-form').addEventListener('submit', e => {
   e.preventDefault();
-  const success = document.getElementById('apply-success');
-  success.classList.add('show');
-  e.target.reset();
-  setTimeout(() => success.classList.remove('show'), 8000);
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  submitToWeb3Forms(e.target, document.getElementById('apply-success'), {
+    successText: "Thank you! Your application was received. We'll be in touch soon.",
+    scrollToSuccess: true,
+    hideAfterMs: 10000
+  });
 });
 
 /* ═══════════════════════════════════════
