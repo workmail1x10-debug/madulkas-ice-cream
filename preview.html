@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Madulka Ice Cream — Preview</title>
+<meta name="description" content="Madulka's Ice Cream Shop is a classic lakeside ice cream stand in Worcester, MA.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{font-family:'Poppins',sans-serif;color:#1a1a1a;background:#fff;line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+ul,ol{list-style:none}
+
+:root{
+  --primary:#FF69B4;
+  --primary-light:#ff8ec7;
+  --primary-dark:#e0509a;
+  --secondary:#ffffff;
+  --accent:#000000;
+  --bg-tint:#fff0f6;
+  --bg-dark:#1a1015;
+  --text:#1a1a1a;
+  --text-light:#555;
+  --text-muted:#888;
+  --radius:12px;
+  --radius-sm:8px;
+  --radius-pill:999px;
+  --shadow:0 4px 24px rgba(0,0,0,.08);
+  --shadow-lg:0 12px 40px rgba(0,0,0,.12);
+  --transition:all .3s ease;
+  --max-w:1200px;
+  --header-h:72px;
+}
+
+h1,h2,h3,h4,h5,h6{font-family:'Fraunces',serif;font-weight:700;line-height:1.15;color:var(--accent)}
+h1{font-size:clamp(2.4rem,5.5vw,4.2rem)}
+h2{font-size:clamp(1.8rem,4vw,2.8rem)}
+h3{font-size:clamp(1.2rem,2.5vw,1.5rem)}
+p{color:var(--text-light)}
+.eyebrow{display:inline-block;font-size:.8rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--primary);margin-bottom:.75rem}
+.section-lede{max-width:560px;margin:0 auto;font-size:1.05rem;line-height:1.7}
+
+.container{width:90%;max-width:var(--max-w);margin:0 auto}
+.section{padding:100px 0}
+.section-header{text-align:center;margin-bottom:60px}
+.section-header h2{margin-bottom:.75rem}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 32px;border-radius:var(--radius-pill);font-family:'Poppins',sans-serif;font-size:.95rem;font-weight:600;cursor:pointer;border:2px solid transparent;transition:var(--transition)}
+.btn-primary{background:var(--primary);color:#fff;border-color:var(--primary)}
+.btn-primary:hover{background:var(--primary-dark);border-color:var(--primary-dark);transform:translateY(-2px);box-shadow:0 6px 20px rgba(255,105,180,.35)}
+.btn-ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.5)}
+.btn-ghost:hover{background:rgba(255,255,255,.12);border-color:#fff}
+
+.reveal{opacity:0;transform:translateY(32px);transition:opacity .7s ease,transform .7s ease}
+.reveal.revealed{opacity:1;transform:translateY(0)}
+
+#header{position:fixed;top:0;left:0;width:100%;z-index:1000;background:rgba(255,255,255,.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);transition:var(--transition);height:var(--header-h)}
+#header.scrolled{background:rgba(255,255,255,.97);box-shadow:0 2px 20px rgba(0,0,0,.08)}
+.header-inner{display:flex;align-items:center;justify-content:flex-start;height:var(--header-h);width:90%;max-width:var(--max-w);margin:0 auto}
+.logo-group{display:flex;align-items:center;gap:12px}
+.header-logo-text{display:flex;flex-direction:column;align-items:flex-start;line-height:1;gap:1px}
+.header-logo-script{font-family:'Fraunces',serif;font-style:italic;font-weight:500;font-size:.9rem;color:var(--accent);letter-spacing:.01em}
+.header-logo-title{font-family:'Fraunces',serif;font-weight:900;font-size:1.35rem;color:var(--primary);letter-spacing:.06em;line-height:.95}
+
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden;padding-top:var(--header-h)}
+.hero-bg{position:absolute;inset:0;background-size:cover;background-position:center;background-repeat:no-repeat;will-change:transform;z-index:0}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,10,15,.55) 0%,rgba(20,10,15,.3) 40%,rgba(20,10,15,.7) 100%);z-index:1}
+.hero-content{position:relative;z-index:2;text-align:center;padding:60px 20px;max-width:820px}
+.hero .eyebrow{color:rgba(255,255,255,.8);background:rgba(255,255,255,.1);padding:6px 18px;border-radius:var(--radius-pill);backdrop-filter:blur(6px)}
+.hero h1{color:#fff;margin:.75rem 0 1rem}
+.hero h1 em{font-style:italic;color:var(--primary-light)}
+.hero-lede{color:rgba(255,255,255,.8);font-size:1.05rem;max-width:600px;margin:0 auto 2rem;line-height:1.7}
+.hero-ctas{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-bottom:2rem}
+.hero-meta{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;color:rgba(255,255,255,.7);font-size:.9rem}
+.rating-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.12);backdrop-filter:blur(8px);padding:6px 14px;border-radius:var(--radius-pill);color:#ffd700;font-weight:600;font-size:.85rem}
+.meta-divider{opacity:.4}
+
+.services{background:#fff}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:32px}
+.service-card{border-radius:var(--radius);overflow:hidden;background:#fff;box-shadow:var(--shadow);transition:var(--transition);position:relative}
+.service-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
+.service-card img{width:100%;height:220px;object-fit:cover}
+.service-card .icon-chip{position:absolute;top:16px;left:16px;width:44px;height:44px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;font-size:1.3rem;box-shadow:0 2px 12px rgba(0,0,0,.1)}
+.service-card-body{padding:24px}
+.service-card-body h3{margin-bottom:8px}
+.service-card-body p{font-size:.95rem}
+.flagship-badge{position:absolute;top:16px;right:16px;background:var(--primary);color:#fff;font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:6px 14px;border-radius:var(--radius-pill)}
+
+.why-section{background:var(--bg-tint)}
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:32px}
+.stat-tile{text-align:center;padding:40px 24px;background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);transition:var(--transition)}
+.stat-tile:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+.stat-number{font-family:'Fraunces',serif;font-size:2.8rem;font-weight:800;color:var(--primary);line-height:1;margin-bottom:8px}
+.stat-tile h3{font-size:1.05rem;margin-bottom:6px}
+.stat-tile p{font-size:.9rem}
+
+.menu-section{background:#fff}
+.menu-icon-badge{width:72px;height:72px;border-radius:50%;background:var(--bg-tint);display:flex;align-items:center;justify-content:center;font-size:2rem;margin:0 auto 16px}
+.flavor-grid{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;max-width:900px;margin:0 auto}
+.flavor-chip{padding:10px 22px;border-radius:var(--radius-pill);background:var(--bg-tint);font-size:.9rem;font-weight:500;color:var(--text);border:2px solid transparent;cursor:default;transition:var(--transition)}
+.flavor-chip:hover{background:var(--primary);color:#fff;border-color:var(--primary);transform:scale(1.05)}
+
+.gallery-section{background:var(--bg-tint)}
+.gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px}
+.gallery-item{position:relative;border-radius:var(--radius);overflow:hidden;cursor:pointer;aspect-ratio:1/1}
+.gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .4s ease}
+.gallery-item:hover img{transform:scale(1.08)}
+.gallery-item::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 60%,rgba(0,0,0,.3));opacity:0;transition:opacity .3s ease}
+.gallery-item:hover::after{opacity:1}
+
+.lightbox{display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.92);backdrop-filter:blur(8px);align-items:center;justify-content:center}
+.lightbox.open{display:flex}
+.lightbox img{max-width:90vw;max-height:85vh;object-fit:contain;border-radius:var(--radius-sm)}
+.lightbox-close,.lightbox-prev,.lightbox-next{position:absolute;background:rgba(255,255,255,.12);border:none;color:#fff;cursor:pointer;transition:var(--transition);border-radius:50%;width:48px;height:48px;display:flex;align-items:center;justify-content:center;font-size:1.4rem}
+.lightbox-close{top:20px;right:20px}
+.lightbox-prev{left:20px;top:50%;transform:translateY(-50%)}
+.lightbox-next{right:20px;top:50%;transform:translateY(-50%)}
+.lightbox-close:hover,.lightbox-prev:hover,.lightbox-next:hover{background:rgba(255,255,255,.25)}
+
+.footer{background:var(--bg-dark);color:rgba(255,255,255,.7);padding:80px 0 0}
+.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:48px;margin-bottom:60px}
+.footer h4{font-family:'Fraunces',serif;color:#fff;font-size:1.1rem;margin-bottom:20px}
+.footer p,.footer li{font-size:.9rem;line-height:1.8}
+.footer a{color:rgba(255,255,255,.7);transition:var(--transition)}
+.footer a:hover{color:var(--primary)}
+.footer-about{max-width:280px}
+.social-icons{display:flex;gap:12px;margin-top:16px}
+.social-icons a{width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;font-size:1.1rem;transition:var(--transition)}
+.social-icons a:hover{background:var(--primary);color:#fff}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding:20px 0;text-align:center;font-size:.85rem}
+
+.scroll-top{position:fixed;bottom:32px;right:32px;width:48px;height:48px;border-radius:50%;background:var(--primary);color:#fff;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.2rem;box-shadow:0 4px 16px rgba(255,105,180,.4);opacity:0;visibility:hidden;transform:translateY(12px);transition:var(--transition);z-index:900}
+.scroll-top.visible{opacity:1;visibility:visible;transform:translateY(0)}
+.scroll-top:hover{background:var(--primary-dark);transform:translateY(-2px)}
+
+@media(max-width:1024px){
+  .footer-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:768px){
+  :root{--header-h:64px}
+  .hero h1{font-size:2rem}
+  .hero-lede{font-size:.95rem}
+  .services-grid{grid-template-columns:1fr}
+  .stats-grid{grid-template-columns:1fr 1fr}
+  .footer-grid{grid-template-columns:1fr}
+  .gallery-grid{grid-template-columns:repeat(auto-fill,minmax(160px,1fr))}
+  .section{padding:70px 0}
+}
+@media(max-width:480px){
+  .stats-grid{grid-template-columns:1fr}
+  .hero-ctas{flex-direction:column;align-items:center}
+  .hero-ctas .btn{width:100%;max-width:280px}
+  .hero-meta{flex-direction:column;gap:6px}
+}
+</style>
+</head>
+<body>
+
+<header id="header">
+  <div class="header-inner">
+    <a href="#home" class="logo-group" aria-label="Madulka's Ice Cream — Home">
+      <div class="header-logo-text">
+        <span class="header-logo-script">Madulka's</span>
+        <span class="header-logo-title">ICE CREAM</span>
+      </div>
+    </a>
+  </div>
+</header>
+
+<section id="home" class="hero">
+  <div class="hero-bg" id="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <span class="eyebrow" data-bind="business.heroEyebrow"></span>
+    <h1 data-bind-html="business.heroHeadline"></h1>
+    <p class="hero-lede" data-bind="business.heroLede"></p>
+    <div class="hero-ctas">
+      <a href="#menu" class="btn btn-primary" data-bind="cta.primary"></a>
+      <a id="hero-phone-btn" class="btn btn-ghost">
+        <span>&#9742;</span>
+        <span data-bind="cta.phoneLabel"></span>
+      </a>
+    </div>
+    <div class="hero-meta">
+      <div class="rating-badge" id="hero-rating"></div>
+      <span class="meta-divider">&middot;</span>
+      <span id="hero-flavors"></span>
+      <span class="meta-divider">&middot;</span>
+      <span id="hero-reviews"></span>
+    </div>
+  </div>
+</section>
+
+<section id="about" class="section services">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="eyebrow">What We Serve</span>
+      <h2 data-bind="sections.servicesHeadline"></h2>
+      <p class="section-lede" data-bind="sections.servicesLede"></p>
+    </div>
+    <div class="services-grid" id="services-grid"></div>
+  </div>
+</section>
+
+<section class="section why-section">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="eyebrow">Why Madulka's</span>
+      <h2 data-bind="sections.whyHeadline"></h2>
+      <p class="section-lede" data-bind="sections.whyLede"></p>
+    </div>
+    <div class="stats-grid" id="stats-grid"></div>
+  </div>
+</section>
+
+<section id="menu" class="section menu-section">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="menu-icon-badge">&#127846;</div>
+      <span class="eyebrow" data-bind="sections.menuEyebrow"></span>
+      <h2 data-bind="sections.menuHeadline"></h2>
+      <p class="section-lede" data-bind="sections.menuLede"></p>
+    </div>
+    <div class="flavor-grid reveal" id="flavor-grid"></div>
+  </div>
+</section>
+
+<section id="gallery" class="section gallery-section">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="eyebrow">Gallery</span>
+      <h2 data-bind="sections.galleryHeadline"></h2>
+    </div>
+    <div class="gallery-grid" id="gallery-grid"></div>
+  </div>
+</section>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-label="Image viewer">
+  <button class="lightbox-close" aria-label="Close lightbox">&times;</button>
+  <button class="lightbox-prev" aria-label="Previous image">&#8249;</button>
+  <img id="lightbox-img" src="" alt="Gallery photo">
+  <button class="lightbox-next" aria-label="Next image">&#8250;</button>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-about">
+        <h4 data-bind="business.name"></h4>
+        <p data-bind="business.about" style="font-size:.85rem;margin-bottom:12px"></p>
+        <div class="social-icons" id="social-icons"></div>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#menu">Our Flavors</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Hours</h4>
+        <ul id="footer-hours"></ul>
+      </div>
+      <div>
+        <h4>Visit</h4>
+        <p id="footer-address" style="margin-bottom:8px"></p>
+        <p id="footer-phone" style="margin-bottom:8px"></p>
+        <p id="footer-service-area" style="font-size:.85rem;color:rgba(255,255,255,.5)"></p>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <p>&copy; <span id="copyright-year"></span> <span data-bind="business.name"></span>. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<button class="scroll-top" id="scroll-top" aria-label="Scroll to top">&#8593;</button>
+
+<script>
+const DEFAULT_CONFIG = {
+  business: {
+    name: "Madulka Ice Cream",
+    tagline: "Lake Views & Great Scoops",
+    about: "Madulka's Ice Cream Shop is a classic lakeside ice cream stand offering a nostalgic, family-friendly atmosphere where simple, handcrafted treats are enjoyed alongside scenic waterfront views and relaxed summer moments in the heart of Worcester, Massachusetts.",
+    heroEyebrow: "Worcester, MA · Est. 2011",
+    heroHeadline: "Ice Cream with <em>Lake Views</em>",
+    heroLede: "32+ handcrafted flavors, stunning sunsets on Lake Quinsigamond, and 15 years of sweet memories. Bring the family, bring the dog — this is your summer spot."
+  },
+  brand: {
+    primary: "#FF69B4",
+    heroImage: "https://scontent.fcps3-1.fna.fbcdn.net/v/t1.6435-9/117935255_4591792664179093_6981365539316201530_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=0327a3&_nc_ohc=c0MBJ-cLZlsQ7kNvwF8jIub&_nc_oc=AdrkBBLcn5bl8zzUR9diPZIDo9RrE3VUZ7OCzQJP2KmX6JoDvxx75bkfNiUSEu_HYV9YiLhQ_Oq-4KWw6qxwl-gG&_nc_zt=23&_nc_ht=scontent.fcps3-1.fna&_nc_gid=Hbc8H3htR4Sel49Rb7Cfgw&_nc_ss=7a3a8&oh=00_Af3qUBIplK6JYneFN4tA8X2ZEol19HBbd7qHqs_zMpf2ig&oe=6A084039"
+  },
+  contact: {
+    phone: "(508) 459-2323",
+    email: "madulkasicecream@gmail.com",
+    street: "193 Lake Avenue",
+    city: "Worcester",
+    state: "MA",
+    zip: "01604",
+    serviceAreas: "Serving Worcester and surrounding communities"
+  },
+  hours: [
+    { day: "Monday",    hours: "Closed" },
+    { day: "Tuesday",   hours: "12 – 8 PM" },
+    { day: "Wednesday", hours: "12 – 8 PM" },
+    { day: "Thursday",  hours: "12 – 8 PM" },
+    { day: "Friday",    hours: "12 – 9 PM" },
+    { day: "Saturday",  hours: "12 – 9 PM" },
+    { day: "Sunday",    hours: "12 – 9 PM" }
+  ],
+  sections: {
+    servicesHeadline: "A little something for everyone.",
+    servicesLede: "From classic scoops to signature sundaes, every treat is crafted to bring you back.",
+    whyHeadline: "A taste of tradition, lakeside.",
+    whyLede: "Here's why the whole neighborhood keeps coming back.",
+    menuEyebrow: "Our Flavors",
+    menuHeadline: "32+ Premium Flavors",
+    menuLede: "Seasonal flavors rotate — ask us what's new today.",
+    galleryHeadline: "A peek at the lake."
+  },
+  services: [
+    {
+      title: "Premium Scoops",
+      description: "32+ handcrafted flavors from classic vanilla to creative favorites like Kahlua Fudge Brownie and Purple Cow.",
+      image: "https://scontent.fcps3-1.fna.fbcdn.net/v/t39.30808-6/484112357_1099046448903558_4720330712701253049_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=13d280&_nc_ohc=cbSVecLno7IQ7kNvwGZO7fn&_nc_oc=Adrc8Jdt6Quc-09Y2V0Ge6YmEeopLCMod2g4asl_V0FHbmhdo1Nf6DzjuhUnUG2WeDuQX52WT2hxq-PmFn77Fhn6&_nc_zt=23&_nc_ht=scontent.fcps3-1.fna&_nc_gid=qgLBnBRPNjqoStj4wdRtWg&_nc_ss=7a3a8&oh=00_Af2YrH7fP8H4mc0nnsKHh7W0zrZ6woNR6-m_x1VAY7LrAw&oe=69E6B569",
+      icon: "\ud83c\udf66"
+    },
+    {
+      title: "Sundaes & Treats",
+      description: "Build-your-own sundaes, banana splits, flurries, and specialty creations — generous portions every time.",
+      image: "https://scontent.fcps3-1.fna.fbcdn.net/v/t39.30808-6/481272420_1094423679365835_6139288454053286430_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=13d280&_nc_ohc=cSaqDVfQyvMQ7kNvwGV-HGE&_nc_oc=AdrdyPZByJyqcmGvetZlBXDjkCpTe6Xi3Xwf3RHRHdCHKbjkqK3Vbu5f6iOTtq56ywGQIV2F89oSsH6e_lTAXPdV&_nc_zt=23&_nc_ht=scontent.fcps3-1.fna&_nc_gid=SbGlSFIHTBHGZcH8mO-FCw&_nc_ss=7a3a8&oh=00_Af17TjNcUe6VwXaN55bJJ3p1ivx5Wnx6LA-oF-13wAymRg&oe=69E6BAAF",
+      icon: "\ud83c\udf68"
+    },
+    {
+      title: "Ice Cream on the Lake",
+      description: "Scenic lake views, stunning sunsets, and outdoor seating right on Lake Quinsigamond — the perfect summer hangout.",
+      image: "https://scontent.fcps3-1.fna.fbcdn.net/v/t39.30808-6/475900288_28904226792509008_5303426606648517148_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=06a7ca&_nc_ohc=fkFk0IRwEj0Q7kNvwFaWIYf&_nc_oc=AdrdINaDMDYxxjpGsq3dwKc7UjtP25gBNp-VmE2rBIdlADaM8M2R3CypdI5me-8RxD0hSpjcb2JxPggQMtRkOKuO&_nc_zt=23&_nc_ht=scontent.fcps3-1.fna&_nc_gid=87vjPDbXZ6uds-XoOA7sRQ&_nc_ss=7a3a8&oh=00_Af2cDJjNb2XBewGcCT-hRmZQBpGQwOVMiqfA9_5BLSUfVA&oe=69E6BB4A",
+      icon: "\ud83c\udf05",
+      flagship: true
+    }
+  ],
+  whys: [
+    { stat: "15+", title: "Years of Tradition", description: "A Worcester staple since 2011." },
+    { stat: "32+", title: "Premium Flavors", description: "Something sweet for every craving." },
+    { stat: "\u2605 4.5", title: "Google Rating", description: "From 720+ verified reviews." },
+    { stat: "#1", title: "Lakeside Spot", description: "The best views in Worcester." }
+  ],
+  menuItems: [
+    "Almond Joy","Belmont Coffee","Black Raspberry","Black Raspberry Chip",
+    "Bubblegum","Butter Crunch","Butter Pecan","Cake Batter",
+    "Chocolate Premium","Chocolate Chip","Chocolate Chocolate Chip","Chocolate Peanut Butter",
+    "Coconut","Coffee Oreo","Cookie Dough","Cotton Candy",
+    "Fudge Ripple","Heavenly Hash","Kahlua Fudge Brownie","M&M",
+    "Maple Walnut","Milky Way","Mint Chocolate Chip","Mocha Chip",
+    "Moose Tracks","Orange Pineapple","Oreo","Peppermint",
+    "Pistachio","Purple Cow","Strawberry","Vanilla Premium"
+  ],
+  reviews: { rating: 4.5, count: 720 },
+  gallery: [
+    "https://scontent.fcps3-1.fna.fbcdn.net/v/t39.30808-6/484112357_1099046448903558_4720330712701253049_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=13d280&_nc_ohc=cbSVecLno7IQ7kNvwGZO7fn&_nc_oc=Adrc8Jdt6Quc-09Y2V0Ge6YmEeopLCMod2g4asl_V0FHbmhdo1Nf6DzjuhUnUG2WeDuQX52WT2hxq-PmFn77Fhn6&_nc_zt=23&_nc_ht=scontent.fcps3-1.fna&_nc_gid=qgLBnBRPNjqoStj4wdRtWg&_nc_ss=7a3a8&oh=00_Af2YrH7fP8H4mc0nnsKHh7W0zrZ6woNR6-m_x1VAY7LrAw&oe=69E6B569",
+    "https://scontent.fcps4-1.fna.fbcdn.net/v/t39.30808-6/483433786_1094433722698164_9211241551896933434_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=13d280&_nc_ohc=BCSUOtXzBt4Q7kNvwFkQV5u&_nc_oc=AdqOHyu--0PUgiLaYvYIl2xSTVuytQ1KnUHCCJZlqq4Eqs2KKsO8ruEqHuO6ukeuLlK1gta1mCwvrZ0lOYc-KWpJ&_nc_zt=23&_nc_ht=scontent.fcps4-1.fna&_nc_gid=H1PIw_UO0jJ847ihOa9uGQ&_nc_ss=7a3a8&oh=00_Af3lu5nEgPfSaZaGCfFlRlHjAXu3xyc54MkviOdzIXFGNg&oe=69E6B5C2",
+    "https://scontent.fcps4-1.fna.fbcdn.net/v/t39.30808-6/482235742_1089260533215483_8669729260644569425_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=13d280&_nc_ohc=BkIhdB9awN0Q7kNvwHhHmRz&_nc_oc=Adqja8ce_ljet3uswTS9yC1XLkvJM1Fdeg4jr5_P2Sx534JsPm9D_0jjuoqrJ_CU5RCedgIptIn4mc1IyP6WbYkP&_nc_zt=23&_nc_ht=scontent.fcps4-1.fna&_nc_gid=3To1W5F7AF-dt5C2T58qPg&_nc_ss=7a3a8&oh=00_Af3GY8MfMEzNeNC55scgwRH6z-5ttMupHLaA3aZy129HlA&oe=69E6CCC0",
+    "https://scontent.fcps3-1.fna.fbcdn.net/v/t39.30808-6/486605482_29450494031215612_3791727221802950589_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=06a7ca&_nc_ohc=qnlBvzELQy4Q7kNvwFCnzUj&_nc_oc=AdrnCP7fYGIefKNW2_uhPcep3wf74_QsATzhJbgOJFWLleMwitrFNx8moZWG2x3zFVymhnbMuRjiq5nltWOkR7wO&_nc_zt=23&_nc_ht=scontent.fcps3-1.fna&_nc_gid=NY0vAfk6-tIQnkdVzPvhDw&_nc_ss=7a3a8&oh=00_Af3X2FiiX4DKrrbdDu3pa07IsNSv8Q1d4giQeZstZL-vMQ&oe=69E6D03C",
+    "https://scontent.fcps4-1.fna.fbcdn.net/v/t39.30808-6/470187971_28356420383956321_7365933301228755933_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=06a7ca&_nc_ohc=cenNqYeLV-IQ7kNvwFW83Pd&_nc_oc=AdoW7AWTLpXNyF76E9mNLoBK7hPdLdWlSJR9psanv0zSXeELJK62OGUca4VWyY_rCX1RzU2zo6rHyon5nTTHb46E&_nc_zt=23&_nc_ht=scontent.fcps4-1.fna&_nc_gid=WBapmIAElto2d0TmjkcFKA&_nc_ss=7a3a8&oh=00_Af2AQMow3ii9Sdlb3Ogx0sIw2miQOxXKKzD4JzK29NbgrQ&oe=69E6BF98",
+    "https://scontent.fcps4-1.fna.fbcdn.net/v/t39.30808-6/472571105_28613916848206672_6403009519986826791_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=06a7ca&_nc_ohc=qKm7TDIm2RcQ7kNvwEziF5b&_nc_oc=AdrUHS-o5J8si7X0FfrokcsrtUGnAqbBZBBjSgukT2ZK4gPrfLxnRy20f3obJuHkACQx3kfXB2qZaKZl0spaVnw1&_nc_zt=23&_nc_ht=scontent.fcps4-1.fna&_nc_gid=cNwJOsxNB-O9WmchVl6nfw&_nc_ss=7a3a8&oh=00_Af0LbmfC7sey5xffV07-jJLPXzwJSFbzKH7Im86mxuu2HA&oe=69E6BE80",
+    "https://scontent.fcps3-1.fna.fbcdn.net/v/t39.30808-6/472728198_28614493441482346_2413358677656061415_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=06a7ca&_nc_ohc=QnCwkS0C-OoQ7kNvwHmLh86&_nc_oc=AdrV0PGEY7l9v50T5DgSHzkKLDIPjD6A4DQs_WSX9K7mjuYHCG9XK-3wP5VmYqrSxv0W-JO6LiSSC92i4sb3TXaA&_nc_zt=23&_nc_ht=scontent.fcps3-1.fna&_nc_gid=0lQQopN1olvVC4D6YKN7EQ&_nc_ss=7a3a8&oh=00_Af0mZ2BnHUuRGdGNLx9srXPw9WA9m-lKINb6UC6zGeNiUQ&oe=69E6BF17",
+    "https://scontent.fcps3-1.fna.fbcdn.net/v/t39.30808-6/475900288_28904226792509008_5303426606648517148_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=06a7ca&_nc_ohc=fkFk0IRwEj0Q7kNvwFaWIYf&_nc_oc=AdrdINaDMDYxxjpGsq3dwKc7UjtP25gBNp-VmE2rBIdlADaM8M2R3CypdI5me-8RxD0hSpjcb2JxPggQMtRkOKuO&_nc_zt=23&_nc_ht=scontent.fcps3-1.fna&_nc_gid=87vjPDbXZ6uds-XoOA7sRQ&_nc_ss=7a3a8&oh=00_Af2cDJjNb2XBewGcCT-hRmZQBpGQwOVMiqfA9_5BLSUfVA&oe=69E6BB4A"
+  ],
+  social: {
+    facebook: "https://www.facebook.com/madulkasicecream",
+    instagram: "https://www.instagram.com/p/C5vdzRMOaP-/",
+    google: "https://maps.app.goo.gl/3WC9MFwEPWScBPKM9"
+  },
+  cta: {
+    primary: "View Our Flavors",
+    phoneLabel: "Call Us"
+  }
+};
+
+const config = DEFAULT_CONFIG;
+
+function resolve(obj, path) {
+  return path.split('.').reduce((o, k) => (o && o[k] !== undefined ? o[k] : ''), obj);
+}
+function fullAddress() {
+  const c = config.contact;
+  return `${c.street}, ${c.city}, ${c.state} ${c.zip}`;
+}
+function telLink() { return 'tel:' + config.contact.phone.replace(/[^\d+]/g, ''); }
+function starString(rating) {
+  const full = Math.floor(rating);
+  const half = rating % 1 >= 0.25;
+  let s = '';
+  for (let i = 0; i < full; i++) s += '\u2605';
+  if (half) s += '\u00bd';
+  return s;
+}
+
+function render() {
+  document.querySelectorAll('[data-bind]').forEach(el => {
+    el.textContent = resolve(config, el.dataset.bind);
+  });
+  document.querySelectorAll('[data-bind-html]').forEach(el => {
+    el.innerHTML = resolve(config, el.dataset.bindHtml);
+  });
+
+  document.getElementById('hero-bg').style.backgroundImage = `url(${config.brand.heroImage})`;
+  document.getElementById('hero-phone-btn').href = telLink();
+  document.getElementById('hero-rating').innerHTML = `${starString(config.reviews.rating)} ${config.reviews.rating} / 5`;
+  document.getElementById('hero-flavors').textContent = config.menuItems.length + '+ Flavors';
+  document.getElementById('hero-reviews').textContent = config.reviews.count + '+ Reviews';
+
+  document.getElementById('services-grid').innerHTML = config.services.map((s, i) => `
+    <div class="service-card reveal" style="transition-delay:${i * .12}s">
+      <img src="${s.image}" alt="${s.title}" loading="lazy">
+      <div class="icon-chip">${s.icon}</div>
+      ${s.flagship ? '<span class="flagship-badge">Our Signature</span>' : ''}
+      <div class="service-card-body">
+        <h3>${s.title}</h3>
+        <p>${s.description}</p>
+      </div>
+    </div>
+  `).join('');
+
+  document.getElementById('stats-grid').innerHTML = config.whys.map((w, i) => `
+    <div class="stat-tile reveal" style="transition-delay:${i * .1}s">
+      <div class="stat-number">${w.stat}</div>
+      <h3>${w.title}</h3>
+      <p>${w.description}</p>
+    </div>
+  `).join('');
+
+  document.getElementById('flavor-grid').innerHTML = config.menuItems.map(f => `<span class="flavor-chip">${f}</span>`).join('');
+
+  document.getElementById('gallery-grid').innerHTML = config.gallery.map((url, i) => `
+    <div class="gallery-item reveal" style="transition-delay:${(i % 4) * .08}s" data-index="${i}">
+      <img src="${url}" alt="Madulka Ice Cream photo ${i + 1}" loading="lazy">
+    </div>
+  `).join('');
+
+  const si = document.getElementById('social-icons');
+  si.innerHTML = '';
+  if (config.social.facebook) si.innerHTML += `<a href="${config.social.facebook}" target="_blank" rel="noopener" aria-label="Facebook">f</a>`;
+  if (config.social.instagram) si.innerHTML += `<a href="${config.social.instagram}" target="_blank" rel="noopener" aria-label="Instagram">\ud83d\udcf7</a>`;
+  if (config.social.google) si.innerHTML += `<a href="${config.social.google}" target="_blank" rel="noopener" aria-label="Google">\u2605</a>`;
+
+  document.getElementById('footer-hours').innerHTML = config.hours.map(h => `<li><strong>${h.day.slice(0, 3)}</strong> ${h.hours}</li>`).join('');
+  document.getElementById('footer-address').textContent = fullAddress();
+  document.getElementById('footer-phone').innerHTML = `<a href="${telLink()}">${config.contact.phone}</a>`;
+  document.getElementById('footer-service-area').textContent = config.contact.serviceAreas;
+  document.getElementById('copyright-year').textContent = new Date().getFullYear();
+
+  initReveal();
+  initGalleryClicks();
+}
+
+function initReveal() {
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('revealed'); obs.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal:not(.revealed)').forEach(el => obs.observe(el));
+}
+
+window.addEventListener('scroll', () => {
+  document.getElementById('header').classList.toggle('scrolled', window.scrollY > 40);
+  document.getElementById('scroll-top').classList.toggle('visible', window.scrollY > 500);
+}, { passive: true });
+
+if (window.matchMedia('(min-width:769px)').matches) {
+  window.addEventListener('scroll', () => {
+    const bg = document.getElementById('hero-bg');
+    if (bg) bg.style.transform = `translateY(${window.scrollY * 0.35}px)`;
+  }, { passive: true });
+}
+
+let lightboxIdx = 0;
+function initGalleryClicks() {
+  document.querySelectorAll('.gallery-item').forEach(item => {
+    item.addEventListener('click', () => openLightbox(+item.dataset.index));
+  });
+}
+function openLightbox(idx) {
+  lightboxIdx = idx;
+  document.getElementById('lightbox-img').src = config.gallery[idx];
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.querySelector('.lightbox-close').addEventListener('click', closeLightbox);
+document.querySelector('.lightbox-prev').addEventListener('click', () => {
+  lightboxIdx = (lightboxIdx - 1 + config.gallery.length) % config.gallery.length;
+  document.getElementById('lightbox-img').src = config.gallery[lightboxIdx];
+});
+document.querySelector('.lightbox-next').addEventListener('click', () => {
+  lightboxIdx = (lightboxIdx + 1) % config.gallery.length;
+  document.getElementById('lightbox-img').src = config.gallery[lightboxIdx];
+});
+document.getElementById('lightbox').addEventListener('click', e => {
+  if (e.target === document.getElementById('lightbox')) closeLightbox();
+});
+document.addEventListener('keydown', e => {
+  if (!document.getElementById('lightbox').classList.contains('open')) return;
+  if (e.key === 'Escape') closeLightbox();
+  if (e.key === 'ArrowLeft') document.querySelector('.lightbox-prev').click();
+  if (e.key === 'ArrowRight') document.querySelector('.lightbox-next').click();
+});
+
+document.getElementById('scroll-top').addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+render();
+</script>
+</body>
+</html>
