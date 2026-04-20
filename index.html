@@ -685,6 +685,8 @@ p{color:var(--text-light)}
         <div class="rating-badge" id="hero-rating"></div>
         <span class="meta-divider">&middot;</span>
         <span id="hero-flavors"></span>
+        <span class="meta-divider">&middot;</span>
+        <span id="hero-reviews"></span>
       </div>
     </div>
   </section>
@@ -1908,9 +1910,9 @@ function render() {
   document.getElementById('hero-phone-btn').href = telLink();
 
   // Hero meta
-  document.getElementById('hero-rating').innerHTML = `<span class="hero-stars">\u2605\u2605\u2605\u2605\u2605</span> <strong>${config.reviews.rating}</strong> <span class="meta-divider">&middot;</span> 700+ reviews`;
+  document.getElementById('hero-rating').innerHTML = `${starString(config.reviews.rating)} ${config.reviews.rating} / 5`;
   document.getElementById('hero-flavors').textContent = config.menuItems.length + '+ Flavors';
-  document.getElementById('hero-reviews').textContent = '';
+  document.getElementById('hero-reviews').textContent = config.reviews.count + '+ Reviews';
 
   // Services
   const sg = document.getElementById('services-grid');
