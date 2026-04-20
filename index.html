@@ -130,10 +130,13 @@ p{color:var(--text-light)}
 .location-eyebrow{display:inline-block;font-size:.75rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--primary);background:#fff;padding:6px 16px;border-radius:var(--radius-pill);margin-bottom:12px;box-shadow:0 2px 10px rgba(255,105,180,.18)}
 .location-big-heading{font-family:'Fraunces',serif;font-size:clamp(1.8rem,4.5vw,2.6rem);line-height:1.1;margin-bottom:8px}
 .location-sub-lede{max-width:560px;margin:6px auto 0;font-size:1rem;color:var(--text-light)}
-.hill-gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:1000px;margin:40px auto 0}
-.hill-photo{aspect-ratio:4/3;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);transition:transform .35s ease}
-.hill-photo:hover{transform:translateY(-4px) scale(1.02)}
-.hill-photo img{width:100%;height:100%;object-fit:cover;display:block}
+.hill-gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;max-width:1100px;margin:40px auto 0}
+.hill-photo{aspect-ratio:4/5;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);transition:transform .35s ease,box-shadow .35s ease;cursor:pointer;position:relative}
+.hill-photo:hover{transform:translateY(-4px) scale(1.02);box-shadow:var(--shadow-lg)}
+.hill-photo img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease}
+.hill-photo:hover img{transform:scale(1.05)}
+.hill-photo::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 60%,rgba(0,0,0,.25));opacity:0;transition:opacity .3s ease;pointer-events:none}
+.hill-photo:hover::after{opacity:1}
 .location-card{display:grid;grid-template-columns:1.2fr 1fr;gap:0;background:#fff;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-lg);margin-bottom:60px}
 .location-map{min-height:420px}
 .location-map iframe{width:100%;height:100%;min-height:420px;border:0;display:block}
@@ -1192,11 +1195,7 @@ p{color:var(--text-light)}
         </div>
       </div>
 
-      <div class="hill-gallery reveal">
-        <div class="hill-photo"><img id="hill-photo-1" alt="Dresser Hill Ice Cream Bar" loading="lazy"></div>
-        <div class="hill-photo"><img id="hill-photo-2" alt="Dresser Hill Ice Cream Bar" loading="lazy"></div>
-        <div class="hill-photo"><img id="hill-photo-3" alt="Dresser Hill Ice Cream Bar" loading="lazy"></div>
-      </div>
+      <div class="hill-gallery reveal" id="hill-gallery"></div>
 
       <div class="section-header reveal amenities-header">
         <span class="eyebrow">The Dresser Hill Experience</span>
@@ -1644,6 +1643,7 @@ p{color:var(--text-light)}
   <label>Hill: Photo 1 URL</label><input data-edit="hillLocation.images.0">
   <label>Hill: Photo 2 URL</label><input data-edit="hillLocation.images.1">
   <label>Hill: Photo 3 URL</label><input data-edit="hillLocation.images.2">
+  <label>Hill: Photo 4 URL</label><input data-edit="hillLocation.images.3">
 
   <h3>Web3Forms Access Keys</h3>
   <label>Contact Form Access Key</label><input data-edit="forms.contactAccessKey">
@@ -1694,7 +1694,12 @@ const DEFAULT_CONFIG = {
     name: "Dresser Hill Ice Cream Bar",
     address: "290 Dresser Hill Rd, Charlton, MA 01507",
     website: "https://www.dresserhillicecreambar.com/",
-    images: ["", "", ""]
+    images: [
+      "images/dresser-hill-1.jpg",
+      "images/dresser-hill-2.jpg",
+      "images/dresser-hill-3.jpg",
+      "images/dresser-hill-4.jpg"
+    ]
   },
   hours: [
     { day: "Monday",    hours: "12 – 9 PM" },
@@ -2027,15 +2032,26 @@ function render() {
       if (hill.website) { hwb.href = hill.website; hwb.style.display = ''; }
       else { hwb.style.display = 'none'; }
     }
-    // Photos
-    [1, 2, 3].forEach(i => {
-      const img = document.getElementById('hill-photo-' + i);
-      const url = hill.images && hill.images[i - 1];
-      if (img) {
-        if (url) { img.src = url; img.parentElement.style.display = ''; }
-        else { img.parentElement.style.display = 'none'; }
+    // Photos — render any filled-in image slots dynamically
+    const hillGalleryEl = document.getElementById('hill-gallery');
+    if (hillGalleryEl) {
+      const imgs = (hill.images || []).filter(Boolean);
+      if (imgs.length) {
+        hillGalleryEl.innerHTML = imgs.map((url, i) => `
+          <div class="hill-photo" data-hill-index="${i}">
+            <img src="${url}" alt="Dresser Hill Ice Cream Bar photo ${i + 1}" loading="lazy">
+          </div>
+        `).join('');
+        hillGalleryEl.style.display = '';
+        // Click to open in lightbox
+        hillGalleryEl.querySelectorAll('.hill-photo').forEach((el, i) => {
+          el.addEventListener('click', () => openLightboxFromList(imgs, i));
+        });
+      } else {
+        hillGalleryEl.innerHTML = '';
+        hillGalleryEl.style.display = 'none';
       }
-    });
+    }
   }
 
   // Socials page cards
