@@ -86,6 +86,7 @@ h3{font-size:clamp(1.2rem,2.5vw,1.5rem)}
 p{color:var(--text-light)}
 .eyebrow{display:inline-block;font-size:.8rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--primary);margin-bottom:.75rem}
 .section-lede{max-width:560px;margin:0 auto;font-size:1.05rem;line-height:1.7}
+.section-lede:empty{display:none}
 .accent{color:var(--primary)}
 
 /* ═══ LAYOUT ═══ */
@@ -1680,8 +1681,8 @@ const DEFAULT_CONFIG = {
     tagline: "Lake Views & Great Scoops",
     about: "Madulka's Ice Cream Shop is a classic lakeside ice cream stand offering a nostalgic, family-friendly atmosphere where simple, handcrafted treats are enjoyed alongside scenic waterfront views and relaxed summer moments in the heart of Worcester, Massachusetts. A local favorite for over 15 years, Madulka's is the spot to be at every spring and summer. Our priority is keeping the tradition alive by offering the most delicious ice cream and treats. Thank you for being part of our journey — we're excited to welcome you back for another unforgettable season!",
     heroEyebrow: "Worcester, MA · Est. 2011",
-    heroHeadline: "Ice Cream with <em>Lake Views</em>",
-    heroLede: "Bring your first date, your last kid at home, your dog, your grandpa. 32+ handcrafted flavors, lakeside seating on Lake Quinsigamond, and 15 years of sweet memories. Every summer belongs here."
+    heroHeadline: "The sweetest spot on <em>Lake Quinsigamond</em>",
+    heroLede: "Drive, Boat, Walk, Or Float!"
   },
   brand: {
     primary: "#FF69B4",
@@ -1737,19 +1738,19 @@ const DEFAULT_CONFIG = {
     {
       title: "Premium Scoops",
       description: "32+ handcrafted flavors from classic vanilla to creative favorites like Kahlua Fudge Brownie and Purple Cow.",
-      image: "images/fb/486605482_29450494031215612.jpg",
+      image: "images/fb/482225115_1095167442624792.jpg",
       icon: "\ud83c\udf66"
     },
     {
       title: "Sundaes & Treats",
       description: "Build-your-own sundaes, banana splits, flurries, and specialty creations — generous portions every time.",
-      image: "images/madulka-friends.jpg",
+      image: "images/fb/486454826_29424549647143384.jpg",
       icon: "\ud83c\udf68"
     },
     {
       title: "Ice Cream on the Lake",
       description: "Scenic lake views and outdoor seating right on Lake Quinsigamond — the perfect summer hangout.",
-      image: "images/fb/486150004_1108833074591562.jpg",
+      image: "images/fb/471410325_18478745059040950.jpg",
       icon: "\ud83c\udf05",
       flagship: true
     }
@@ -1805,21 +1806,36 @@ const DEFAULT_CONFIG = {
     "images/fb/485369146_1104067085068161.jpg"
   ],
   gallery: [
-    "images/fb/486605482_29450494031215612.jpg",
     "images/fb/471410325_18478745059040950.jpg",
     "images/fb/486454826_29424549647143384.jpg",
-    "images/madulka-boat-family.jpg",
     "images/fb/484372277_1102045418603661.jpg",
-    "images/fb/485369146_1104067085068161.jpg",
     "images/fb/485349214_1104067131734823.jpg",
     "images/fb/486150004_1108833074591562.jpg",
-    "images/fb/486150004_1108833074591562.jpg",
-    "images/fb/471410325_18478745059040950.jpg",
-    "images/fb/485349214_1104067131734823.jpg",
     "images/fb/482225115_1095167442624792.jpg",
-    "images/fb/486454826_29424549647143384.jpg",
-    "images/fb/484372277_1102045418603661.jpg",
-    "images/fb/485369146_1104067085068161.jpg"
+    "images/madulka-friends.jpg",
+    "images/madulka-sign-girls.jpg",
+    "images/fb/485681935_1103408171800719.jpg",
+    "images/gallery/116263379_4488024494555911_8115716048697359209_n.jpg",
+    "images/gallery/204371481_6117766214915056_3214504948368338285_n.jpg",
+    "images/gallery/206038900_6128480850510259_7586128717332103002_n.jpg",
+    "images/gallery/206255472_6103139823044362_6375944649912321384_n.jpg",
+    "images/gallery/468428117_28196363783295316_3923658190158366868_n.jpg",
+    "images/gallery/468473850_28196373619960999_3278704585317291048_n.jpg",
+    "images/gallery/468520627_28196381543293540_8063635637001951085_n.jpg",
+    "images/gallery/468844401_28237220332542994_4375807300970819984_n.jpg",
+    "images/gallery/473185771_1051753643632839_5346786247290546333_n.jpg",
+    "images/gallery/473596043_1052354306906106_6859820863310842792_n.jpg",
+    "images/gallery/481824162_1093702062771330_1530132306042667341_n.jpg",
+    "images/gallery/484586329_1100226462118890_5903148213739997836_n.jpg",
+    "images/gallery/485021987_1104054578402745_5267422839322741189_n.jpg",
+    "images/gallery/485382457_1104591591682377_116877978957053960_n.jpg",
+    "images/gallery/487203518_29445432898388392_8879001605021353286_n.jpg",
+    "images/gallery/487511536_29538873892377625_5522255298950251481_n.jpg",
+    "images/gallery/489893994_29581845298080484_2979125653105652654_n.jpg",
+    "images/gallery/490495989_1124245569716979_3965995147315372784_n.jpg",
+    "images/gallery/500715187_18507177844040950_282111139246346482_n.jpg",
+    "images/gallery/545022083_31808384832093175_3829777682721298173_n.jpg",
+    "images/gallery/556106514_32082792854652370_8267387118596734621_n.jpg"
   ],
   social: {
     facebook: "https://www.facebook.com/madulkasicecream",
@@ -1842,19 +1858,19 @@ const DEFAULT_CONFIG = {
   },
   moments: {
     eyebrow: "The Madulka's Moments",
-    headline: "Every shade of summer.",
-    lede: "Every kind of family. Every stage of life. Every scoop, a memory you carry for years. Come be part of the next one.",
+    headline: "The Lake, But Sweeter",
+    lede: "",
     photos: [
-      { url: "https://images.pexels.com/photos/29814732/pexels-photo-29814732.jpeg?auto=compress&cs=tinysrgb&w=800", alt: "Smiling elderly woman holding an ice cream cone, eyes bright with joy" },
-      { url: "images/madulka-dog-window.jpg", alt: "Golden retriever at the Madulka's Ice Cream window, paws on the counter" },
-      { url: "https://images.pexels.com/photos/978947/pexels-photo-978947.jpeg?auto=compress&cs=tinysrgb&w=800", alt: "Dog licking a strawberry ice cream cone held by its owner outdoors" },
-      { url: "https://images.pexels.com/photos/4871931/pexels-photo-4871931.jpeg?auto=compress&cs=tinysrgb&w=800", alt: "Smiling interracial couple enjoying ice cream cones together outdoors" },
-      { url: "images/madulka-friends.jpg", alt: "Four friends with ice cream cones on the dock at Madulka's Ice Cream" },
-      { url: "images/fb/485681935_1103408171800719.jpg", alt: "A Madulka's Ice Cream moment" },
-      { url: "https://images.pexels.com/photos/5094686/pexels-photo-5094686.jpeg?auto=compress&cs=tinysrgb&w=800", alt: "Young girl enjoying a chocolate ice cream cone outdoors on a sunny summer day" },
-      { url: "https://images.pexels.com/photos/28944788/pexels-photo-28944788.jpeg?auto=compress&cs=tinysrgb&w=800", alt: "Happy black Labrador eating ice cream at a sunny outdoor cafe" },
+      { url: "images/madulka-father-daughter.jpg", alt: "Father and daughter enjoying ice cream together at Madulka's on Lake Quinsigamond" },
+      { url: "images/madulka-boat-family.jpg", alt: "Family on a boat on Lake Quinsigamond enjoying ice cream together" },
+      { url: "images/madulka-friends.jpg", alt: "Four friends with ice cream on the dock at Madulka's Ice Cream" },
+      { url: "images/madulka-softball-girls.jpg", alt: "Two young softball teammates enjoying ice cream cones at Madulka's" },
+      { url: "images/madulka-cotton-candy-girl.jpg", alt: "Young girl with wide eyes holding a cotton candy ice cream cone at Madulka's by the lake" },
       { url: "images/fb/484372277_1102045418603661.jpg", alt: "Rainbow over Lake Quinsigamond at Madulka's Ice Cream" },
-      { url: "images/madulka-sign-girls.jpg", alt: "Two friends posing under the iconic pink Madulka's Ice Cream sign" }
+      { url: "images/fb/485681935_1103408171800719.jpg", alt: "Chocolate sundae with cherry overlooking Lake Quinsigamond" },
+      { url: "images/fb/471410325_18478745059040950.jpg", alt: "Strawberry sundae held up with Lake Quinsigamond in the background" },
+      { url: "images/fb/486454826_29424549647143384.jpg", alt: "Chocolate sundae held up under the iconic Madulka's Ice Cream pink awning" },
+      { url: "images/madulka-sign-girls.jpg", alt: "Two friends posing under the Madulka's Ice Cream pink sign" }
     ]
   },
   forms: {
