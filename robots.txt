@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://madulkasicecream.com/sitemap.xml
+Sitemap: https://www.madulkasicecream.com/sitemap.xml
